@@ -1,0 +1,103 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexweb AI</title>
+    <link rel="stylesheet" href="style.css">
+</head><body><header class="topbar">
+    <div class="logo">
+        <span class="logo-mark">N</span>
+        <span>Nexweb AI</span>
+    </div>
+
+    <button id="newProjectBtn" class="new-project-btn">
+        + New Project
+    </button>
+</header>
+
+
+<main class="app">
+
+    <section class="hero">
+        <div class="hero-badge">AI WEBSITE CREATOR</div>
+
+        <h1>
+            Build your website<br>
+            <span>with AI.</span>
+        </h1>
+
+        <p>
+            Describe what you want to create and Nexweb AI
+            will help turn your idea into a website.
+        </p>
+    </section>
+
+
+    <section class="creator-card">
+
+        <div class="card-header">
+            <div>
+                <h2>What do you want to build?</h2>
+                <p>Describe your website in simple words.</p>
+            </div>
+
+            <span class="status-dot">Ready</span>
+        </div>
+
+
+        <textarea
+            id="promptInput"
+            placeholder="Example: Create a modern website for a clothing business with a homepage, products section and contact form..."
+        ></textarea>
+
+
+        <div class="creator-actions">
+
+            <button id="generateBtn" class="generate-btn">
+                <span>Generate Website</span>
+                <span class="arrow">→</span>
+            </button>
+
+            <button id="clearBtn" class="clear-btn">
+                Clear
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <section id="previewSection" class="preview-section">
+
+        <div class="section-heading">
+            <div>
+                <h2>Website Preview</h2>
+                <p>Your generated website will appear here.</p>
+            </div>
+        </div>
+
+        <div id="preview" class="preview">
+            <div class="preview-empty">
+                <div class="preview-icon">✦</div>
+                <h3>No website generated yet</h3>
+                <p>
+                    Enter an idea above and click
+                    <strong>Generate Website</strong>.
+                </p>
+            </div>
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer class="footer">
+    <p>© 2026 Nexweb AI. Built for creators.</p>
+</footer>
+
+
+<script src="main.js"></script>
+
+</body>
+</html>
