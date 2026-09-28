@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nexweb AI — Build, edit, preview and manage websites with AI.">
+    <meta name="theme-color" content="#0b1020">
+    <title>Nexweb AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app" class="app">
+
+        <aside id="sidebar" class="sidebar">
+            <div class="sidebar-top">
+                <div class="brand">
+                    <div class="brand-mark"><span>N</span></div>
+                    <div class="brand-text"><strong>Nexweb</strong><span>AI</span></div>
+                </div>
+                <button id="sidebarCloseBtn" class="icon-button mobile-only" type="button" aria-label="Close sidebar">×</button>
+            </div>
+
+            <div class="workspace-selector">
+                <div class="workspace-icon">W</div>
+                <div class="workspace-information">
+                    <strong>My Workspace</strong>
+                    <span>Personal</span>
+                </div>
+                <button id="workspaceMenuBtn" class="small-icon-button" type="button" aria-label="Workspace menu">⋮</button>
+            </div>
+
+            <nav class="main-navigation" aria-label="Main navigation">
+                <button class="nav-item active" data-page="dashboard" type="button"><span class="nav-icon">⌂</span><span>Dashboard</span></button>
+                <button class="nav-item" data-page="projects" type="button"><span class="nav-icon">▣</span><span>Projects</span></button>
+                <button class="nav-item" data-page="templates" type="button"><span class="nav-icon">◇</span><span>Templates</span></button>
+                <button class="nav-item" data-page="files" type="button"><span class="nav-icon">▤</span><span>Files</span></button>
+                <button class="nav-item" data-page="activity" type="button"><span class="nav-icon">◷</span><span>Activity</span></button>
+            </nav>
+
+            <div class="sidebar-divider"></div>
+
+            <div class="sidebar-section">
+                <p class="sidebar-label">CREATE</p>
+                <button id="newProjectSidebarBtn" class="sidebar-action" type="button"><span>＋</span><span>New project</span></button>
+                <button id="importProjectBtn" class="sidebar-action" type="button"><span>⇧</span><span>Import project</span></button>
+            </div>
+
+            <div class="sidebar-spacer"></div>
+
+            <nav class="sidebar-bottom">
+                <button class="nav-item" data-page="settings" type="button"><span class="nav-icon">⚙</span><span>Settings</span></button>
+                <button class="nav-item" data-page="help" type="button"><span class="nav-icon">?</span><span>Help &amp; support</span></button>
+            </nav>
+
+            <div class="user-profile">
+                <div class="avatar">JP</div>
+                <div class="user-information"><strong>My Account</strong><span>Free plan</span></div>
+                <button id="profileMenuBtn" class="small-icon-button" type="button" aria-label="Profile menu">⋮</button>
+            </div>
+        </aside>
+
+        <main class="main-area">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button id="mobileMenuBtn" class="icon-button mobile-menu-button" type="button" aria-label="Open menu">☰</button>
+                    <div class="breadcrumb">
+                        <span>Nexweb AI</span>
+                        <span class="breadcrumb-separator">/</span>
+                        <span id="breadcrumbCurrent">Dashboard</span>
+                    </div>
+                </div>
+
+                <div class="topbar-right">
+                    <button id="globalSearchBtn" class="topbar-button" type="button">
+                        <span>⌕</span><span class="hide-mobile">Search</span><kbd>Ctrl K</kbd>
+                    </button>
+                    <button id="notificationBtn" class="icon-button notification-button" type="button" aria-label="Notifications">
+                        ♢<span id="notificationBadge" class="notification-badge">2</span>
+                    </button>
+                    <button id="topProfileBtn" class="avatar avatar-small" type="button" aria-label="Open profile">JP</button>
+                </div>
+            </header>
+
+            <div class="page-container">
+
+                <section id="dashboardPage" class="page active-page" data-page-content="dashboard">
+                    <div class="page-heading">
+                        <div>
+                            <p class="eyebrow">WORKSPACE</p>
+                            <h1>Build something great.</h1>
+                            <p class="page-description">Turn your ideas into websites with Nexweb AI.</p>
+                        </div>
+                        <button id="newProjectBtn" class="primary-button" type="button"><span>＋</span>New project</button>
+                    </div>
+
+                    <div class="hero-create-card">
+                        <div class="hero-create-content">
+                            <div class="ai-badge"><span>✦</span>Nexweb AI</div>
+                            <h2>What do you want to build?</h2>
+                            <p>Describe your website or application and let Nexweb AI help you turn the idea into a working project.</p>
+
+                            <div class="prompt-box">
+                                <textarea id="dashboardPrompt" rows="4" placeholder="Example: Build a modern portfolio website for a software developer..." aria-label="Describe what you want to build"></textarea>
+                                <div class="prompt-toolbar">
+                                    <div class="prompt-tools">
+                                        <button id="attachFileBtn" class="prompt-tool" type="button">＋ Attach</button>
+                                        <button id="templatePromptBtn" class="prompt-tool" type="button">◇ Template</button>
+                                    </div>
+                                    <button id="dashboardGenerateBtn" class="generate-button" type="button"><span>✦</span>Generate</button>
+                                </div>
+                            </div>
+
+                            <div class="prompt-suggestions">
+                                <button class="suggestion-chip" data-prompt="Create a modern personal portfolio website" type="button">Portfolio</button>
+                                <button class="suggestion-chip" data-prompt="Create a modern business landing page" type="button">Business website</button>
+                                <button class="suggestion-chip" data-prompt="Create an online store website" type="button">Online store</button>
+                                <button class="suggestion-chip" data-prompt="Create a modern school website" type="button">School website</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-heading">
+                        <div><h2>Workspace overview</h2><p>Your recent activity at a glance.</p></div>
+                    </div>
+
+                    <div class="stats-grid">
+                        <article class="stat-card"><div class="stat-icon">▣</div><div class="stat-content"><span class="stat-label">Projects</span><strong id="projectsCount" class="stat-value">0</strong></div></article>
+                        <article class="stat-card"><div class="stat-icon">◇</div><div class="stat-content"><span class="stat-label">Published</span><strong id="publishedCount" class="stat-value">0</strong></div></article>
+                        <article class="stat-card"><div class="stat-icon">◷</div><div class="stat-content"><span class="stat-label">Recent edits</span><strong id="editsCount" class="stat-value">0</strong></div></article>
+                        <article class="stat-card"><div class="stat-icon">✦</div><div class="stat-content"><span class="stat-label">AI generations</span><strong id="generationsCount" class="stat-value">0</strong></div></article>
+                    </div>
+
+                    <div class="section-heading section-heading-with-action">
+                        <div><h2>Recent projects</h2><p>Continue working on your latest projects.</p></div>
+                        <button class="text-button" data-page="projects" type="button">View all →</button>
+                    </div>
+
+                    <div id="recentProjectsGrid" class="projects-grid">
+                        <div class="empty-state">
+                            <div class="empty-state-icon">▣</div>
+                            <h3>No projects yet</h3>
+                            <p>Create your first project to get started.</p>
+                            <button class="secondary-button" id="emptyCreateProjectBtn" type="button">Create project</button>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="projectsPage" class="page" data-page-content="projects">
+                    <div class="page-heading">
+                        <div><p class="eyebrow">WORKSPACE</p><h1>Projects</h1><p class="page-description">Manage all your Nexweb projects.</p></div>
+                        <button class="primary-button" id="projectsNewBtn" type="button">＋ New project</button>
+                    </div>
+
+                    <div class="toolbar">
+                        <div class="search-field"><span>⌕</span><input id="projectSearchInput" type="search" placeholder="Search projects..."></div>
+                        <div class="toolbar-actions">
+                            <select id="projectSortSelect" class="select-control" aria-label="Sort projects">
+                                <option value="updated">Recently updated</option>
+                                <option value="created">Recently created</option>
+                                <option value="name">Name</option>
+                            </select>
+                            <button id="projectViewToggle" class="icon-button" type="button" aria-label="Change project view">▦</button>
+                        </div>
+                    </div>
+
+                    <div id="allProjectsGrid" class="projects-grid">
+                        <div class="empty-state">
+                            <div class="empty-state-icon">▣</div>
+                            <h3>No projects found</h3>
+                            <p>Your projects will appear here.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="templatesPage" class="page" data-page-content="templates">
+                    <div class="page-heading">
+                        <div><p class="eyebrow">START FASTER</p><h1>Templates</h1><p class="page-description">Start from a ready-made website structure.</p></div>
+                    </div>
+
+                    <div class="template-categories">
+                        <button class="category-chip active" data-template-category="all" type="button">All</button>
+                        <button class="category-chip" data-template-category="business" type="button">Business</button>
+                        <button class="category-chip" data-template-category="portfolio" type="button">Portfolio</button>
+                        <button class="category-chip" data-template-category="store" type="button">Store</button>
+                        <button class="category-chip" data-template-category="blog" type="button">Blog</button>
+                        <button class="category-chip" data-template-category="landing" type="button">Landing page</button>
+                    </div>
+
+                    <div id="templatesGrid" class="templates-grid">
+                        <article class="template-card" data-category="business">
+                            <div class="template-preview preview-business"><div class="preview-browser-bar"></div><div class="preview-lines"></div></div>
+                            <div class="template-card-body"><h3>Modern Business</h3><p>Clean business landing page.</p><button class="secondary-button template-use-btn" data-template="Modern Business" type="button">Use template</button></div>
+                        </article>
+
+                        <article class="template-card" data-category="portfolio">
+                            <div class="template-preview preview-portfolio"><div class="preview-browser-bar"></div><div class="preview-lines"></div></div>
+                            <div class="template-card-body"><h3>Developer Portfolio</h3><p>Personal portfolio for developers.</p><button class="secondary-button template-use-btn" data-template="Developer Portfolio" type="button">Use template</button></div>
+                        </article>
+
+                        <article class="template-card" data-category="store">
+                            <div class="template-preview preview-store"><div class="preview-browser-bar"></div><div class="preview-lines"></div></div>
+                            <div class="template-card-body"><h3>Online Store</h3><p>Product-focused ecommerce layout.</p><button class="secondary-button template-use-btn" data-template="Online Store" type="button">Use template</button></div>
+                        </article>
+
+                        <article class="template-card" data-category="blog">
+                            <div class="template-preview preview-blog"><div class="preview-browser-bar"></div><div class="preview-lines"></div></div>
+                            <div class="template-card-body"><h3>Creator Blog</h3><p>Simple modern publishing layout.</p><button class="secondary-button template-use-btn" data-template="Creator Blog" type="button">Use template</button></div>
+                        </article>
+
+                        <article class="template-card" data-category="landing">
+                            <div class="template-preview preview-landing"><div class="preview-browser-bar"></div><div class="preview-lines"></div></div>
+                            <div class="template-card-body"><h3>Product Landing</h3><p>Focused product introduction page.</p><button class="secondary-button template-use-btn" data-template="Product Landing" type="button">Use template</button></div>
+                        </article>
+
+                        <article class="template-card" data-category="business">
+                            <div class="template-preview preview-agency"><div class="preview-browser-bar"></div><div class="preview-lines"></div></div>
+                            <div class="template-card-body"><h3>Creative Agency</h3><p>Bold agency and services layout.</p><button class="secondary-button template-use-btn" data-template="Creative Agency" type="button">Use template</button></div>
+                        </article>
+                    </div>
+                </section>
+
+                <section id="filesPage" class="page" data-page-content="files">
+                    <div class="page-heading">
+                        <div><p class="eyebrow">PROJECT FILES</p><h1>Files</h1><p class="page-description">Manage your HTML, CSS and JavaScript files.</p></div>
+                        <button id="newFileBtn" class="primary-button" type="button">＋ New file</button>
+                    </div>
+
+                    <div class="file-manager">
+                        <div class="file-sidebar">
+                            <div class="file-sidebar-heading"><strong>Current project</strong></div>
+                            <button class="file-project active" type="button"><span>▣</span><span>My Website</span></button>
+                        </div>
+
+                        <div class="file-list">
+                            <div class="file-list-heading"><span>Name</span><span>Type</span><span>Updated</span></div>
+                            <button class="file-row" data-file="index.html" type="button"><span>◇ index.html</span><span>HTML</span><span>Just now</span></button>
+                            <button class="file-row" data-file="style.css" type="button"><span>◇ style.css</span><span>CSS</span><span>Just now</span></button>
+                            <button class="file-row" data-file="main.js" type="button"><span>◇ main.js</span><span>JavaScript</span><span>Just now</span></button>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="activityPage" class="page" data-page-content="activity">
+                    <div class="page-heading">
+                        <div><p class="eyebrow">HISTORY</p><h1>Activity</h1><p class="page-description">See what has happened in your workspace.</p></div>
+                    </div>
+
+                    <div id="activityList" class="activity-list">
+                        <div class="activity-empty">
+                            <div class="empty-state-icon">◷</div>
+                            <h3>No activity yet</h3>
+                            <p>Your project activity will appear here.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="settingsPage" class="page" data-page-content="settings">
+                    <div class="page-heading">
+                        <div><p class="eyebrow">PREFERENCES</p><h1>Settings</h1><p class="page-description">Configure your Nexweb AI workspace.</p></div>
+                    </div>
+
+                    <div class="settings-layout">
+                        <aside class="settings-navigation">
+                            <button class="settings-nav-item active" data-settings-tab="general" type="button">General</button>
+                            <button class="settings-nav-item" data-settings-tab="appearance" type="button">Appearance</button>
+                            <button class="settings-nav-item" data-settings-tab="ai" type="button">AI</button>
+                            <button class="settings-nav-item" data-settings-tab="account" type="button">Account</button>
+                        </aside>
+
+                        <div class="settings-content">
+                            <div class="settings-panel active" data-settings-panel="general">
+                                <h2>General</h2><p>Basic workspace preferences.</p>
+
+                                <label class="setting-row">
+                                    <span><strong>Workspace name</strong><small>The name shown throughout Nexweb AI.</small></span>
+                                    <input id="workspaceNameInput" class="settings-input" type="text" value="My Workspace">
+                                </label>
+
+                                <label class="setting-row">
+                                    <span><strong>Auto-save</strong><small>Automatically save project changes.</small></span>
+                                    <input id="autoSaveToggle" class="toggle" type="checkbox" checked>
+                                </label>
+                            </div>
+
+                            <div class="settings-panel" data-settings-panel="appearance">
+                                <h2>Appearance</h2><p>Customize how Nexweb AI looks.</p>
+
+                                <div class="appearance-options">
+                                    <button class="appearance-option active" data-theme="dark" type="button"><span class="theme-preview dark-preview"></span><strong>Dark</strong></button>
+                                    <button class="appearance-option" data-theme="light" type="button"><span class="theme-preview light-preview"></span><strong>Light</strong></button>
+                                </div>
+                            </div>
+
+                            <div class="settings-panel" data-settings-panel="ai">
+                                <h2>AI settings</h2><p>Configure AI generation preferences.</p>
+
+                                <label class="setting-row">
+                                    <span><strong>AI assistance</strong><small>Enable AI-powered project generation.</small></span>
+                                    <input id="aiToggle" class="toggle" type="checkbox" checked>
+                                </label>
+
+                                <label class="setting-row">
+                                    <span><strong>Generation quality</strong><small>Choose how detailed generated projects should be.</small></span>
+                                    <select id="aiQualitySelect" class="select-control">
+                                        <option value="fast">Fast</option>
+                                        <option value="balanced" selected>Balanced</option>
+                                        <option value="detailed">Detailed</option>
+                                    </select>
+                                </label>
+                            </div>
+
+                            <div class="settings-panel" data-settings-panel="account">
+                                <h2>Account</h2><p>Manage your Nexweb AI account.</p>
+                                <div class="account-card">
+                                    <div class="avatar">JP</div>
+                                    <div><strong>My Account</strong><span>Free plan</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="helpPage" class="page" data-page-content="help">
+                    <div class="page-heading">
+                        <div><p class="eyebrow">SUPPORT</p><h1>Help &amp; support</h1><p class="page-description">Find answers and learn how Nexweb AI works.</p></div>
+                    </div>
+
+                    <div class="help-grid">
+                        <article class="help-card"><div class="help-icon">?</div><h3>Getting started</h3><p>Learn how to create your first project.</p><button class="text-button" type="button">Learn more →</button></article>
+                        <article class="help-card"><div class="help-icon">✦</div><h3>AI generation</h3><p>Learn how to write effective website prompts.</p><button class="text-button" type="button">Learn more →</button></article>
+                        <article class="help-card"><div class="help-icon">◇</div><h3>Project editor</h3><p>Understand files, preview and editing.</p><button class="text-button" type="button">Learn more →</button></article>
+                    </div>
+                </section>
+
+                <section id="editorPage" class="page editor-page" data-page-content="editor">
+                    <div class="editor-header">
+                        <div class="editor-project-info">
+                            <button id="backToProjectsBtn" class="icon-button" type="button" aria-label="Back to projects">←</button>
+                            <div>
+                                <input id="editorProjectName" class="project-name-input" type="text" value="Untitled Project" aria-label="Project name">
+                                <span id="editorSaveStatus" class="save-status">Saved</span>
+                            </div>
+                        </div>
+
+                        <div class="editor-actions">
+                            <button id="undoBtn" class="icon-button" type="button" title="Undo">↶</button>
+                            <button id="redoBtn" class="icon-button" type="button" title="Redo">↷</button>
+                            <div class="editor-divider"></div>
+                            <button id="editorPreviewBtn" class="secondary-button" type="button">▶ Preview</button>
+                            <button id="publishBtn" class="primary-button" type="button">Publish</button>
+                        </div>
+                    </div>
+
+                    <div class="editor-ai-bar">
+                        <div class="editor-ai-icon">✦</div>
+                        <input id="editorAiInput" type="text" placeholder="Ask Nexweb AI to change your website..." autocomplete="off">
+                        <button id="editorAiSendBtn" class="generate-button" type="button">Send</button>
+                    </div>
+
+                    <div class="editor-workspace">
+                        <aside class="editor-file-panel">
+                            <div class="editor-panel-header">
+                                <strong>Files</strong>
+                                <button id="editorNewFileBtn" class="small-icon-button" type="button" aria-label="New file">＋</button>
+                            </div>
+
+                            <div class="editor-file-tree">
+                                <button class="editor-file active" data-editor-file="index.html" type="button"><span class="file-type html">HTML</span><span>index.html</span></button>
+                                <button class="editor-file" data-editor-file="style.css" type="button"><span class="file-type css">CSS</span><span>style.css</span></button>
+                                <button class="editor-file" data-editor-file="main.js" type="button"><span class="file-type js">JS</span><span>main.js</span></button>
+                            </div>
+                        </aside>
+
+                        <section class="code-editor-panel">
+                            <div class="code-editor-tabs">
+                                <button class="code-tab active" data-code-tab="index.html" type="button"><span class="file-type html">HTML</span>index.html</button>
+                                <button class="code-tab" data-code-tab="style.css" type="button"><span class="file-type css">CSS</span>style.css</button>
+                                <button class="code-tab" data-code-tab="main.js" type="button"><span class="file-type js">JS</span>main.js</button>
+                            </div>
+
+                            <div class="code-editor-body">
+                                <div id="lineNumbers" class="line-numbers">1</div>
+                                <textarea id="codeEditor" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" aria-label="Code editor"></textarea>
+                            </div>
+
+                            <div class="code-editor-status">
+                                <span id="editorLanguage">HTML</span>
+                                <span id="editorLineCount">1 line</span>
+                                <span>UTF-8</span>
+                                <span>Spaces: 4</span>
+                            </div>
+                        </section>
+
+                        <section class="preview-panel">
+                            <div class="preview-header">
+                                <div class="preview-title">Preview</div>
+
+                                <div class="preview-controls">
+                                    <button class="preview-device active" data-device="desktop" type="button" aria-label="Desktop preview">▱</button>
+                                    <button class="preview-device" data-device="tablet" type="button" aria-label="Tablet preview">▯</button>
+                                    <button class="preview-device" data-device="mobile" type="button" aria-label="Mobile preview">▯</button>
+                                    <button id="refreshPreviewBtn" class="icon-button" type="button" aria-label="Refresh preview">↻</button>
+                                    <button id="openPreviewBtn" class="icon-button" type="button" aria-label="Open preview">↗</button>
+                                </div>
+                            </div>
+
+                            <div id="previewCanvas" class="preview-canvas desktop-preview">
+                                <div class="preview-browser">
+                                    <div class="browser-bar">
+                                        <div class="browser-dots"><span></span><span></span><span></span></div>
+                                        <div class="browser-address">nexweb.local</div>
+                                    </div>
+                                    <iframe id="websitePreview" title="Website preview" sandbox="allow-scripts"></iframe>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <div id="searchModal" class="modal-overlay hidden" aria-hidden="true">
+        <div class="modal search-modal">
+            <div class="modal-header">
+                <h2>Search</h2>
+                <button class="modal-close" data-close-modal="searchModal" type="button">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="search-field large"><span>⌕</span><input id="globalSearchInput" type="search" placeholder="Search projects, files and settings..." autocomplete="off"></div>
+                <div id="globalSearchResults" class="search-results"><div class="search-placeholder">Start typing to search.</div></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="newProjectModal" class="modal-overlay hidden" aria-hidden="true">
+        <div class="modal project-modal">
+            <div class="modal-header">
+                <div><p class="eyebrow">NEW PROJECT</p><h2>Create a project</h2></div>
+                <button class="modal-close" data-close-modal="newProjectModal" type="button">×</button>
+            </div>
+
+            <div class="modal-body">
+                <label class="form-label" for="newProjectName">Project name</label>
+                <input id="newProjectName" class="form-input" type="text" placeholder="My amazing website">
+
+                <label class="form-label" for="newProjectPrompt">What are you building?</label>
+                <textarea id="newProjectPrompt" class="form-textarea" rows="6" placeholder="Describe your website or application..."></textarea>
+
+                <div class="quick-template-section">
+                    <span class="form-label">Start from</span>
+                    <div class="quick-template-grid">
+                        <button class="quick-template active" data-template-choice="blank" type="button"><span>＋</span>Blank project</button>
+                        <button class="quick-template" data-template-choice="portfolio" type="button"><span>◇</span>Portfolio</button>
+                        <button class="quick-template" data-template-choice="business" type="button"><span>▣</span>Business</button>
+                        <button class="quick-template" data-template-choice="store" type="button"><span>□</span>Store</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="secondary-button" data-close-modal="newProjectModal" type="button">Cancel</button>
+                <button id="createProjectConfirmBtn" class="primary-button" type="button">Create project</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="notificationPanel" class="floating-panel hidden">
+        <div class="floating-panel-header">
+            <strong>Notifications</strong>
+            <button id="markNotificationsReadBtn" class="text-button" type="button">Mark all read</button>
+        </div>
+
+        <div class="notification-item unread">
+            <div class="notification-icon">✦</div>
+            <div><strong>Welcome to Nexweb AI</strong><p>Create your first project to get started.</p><small>Just now</small></div>
+        </div>
+
+        <div class="notification-item">
+            <div class="notification-icon">✓</div>
+            <div><strong>Workspace ready</strong><p>Your workspace has been successfully created.</p><small>Today</small></div>
+        </div>
+    </div>
+
+    <div id="profileMenu" class="floating-menu hidden">
+        <button type="button" data-page="settings">⚙ Settings</button>
+        <button type="button" id="profileHelpBtn">? Help</button>
+        <div class="menu-divider"></div>
+        <button type="button" id="signOutBtn">⇥ Sign out</button>
+    </div>
+
+    <div id="workspaceMenu" class="floating-menu hidden">
+        <button type="button" id="renameWorkspaceBtn">✎ Rename workspace</button>
+        <button type="button" id="workspaceSettingsBtn" data-page="settings">⚙ Workspace settings</button>
+    </div>
+
+    <div id="toastContainer" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+    <div id="confirmModal" class="modal-overlay hidden" aria-hidden="true">
+        <div class="modal small-modal">
+            <div class="modal-header">
+                <h2 id="confirmTitle">Confirm action</h2>
+                <button class="modal-close" data-close-modal="confirmModal" type="button">×</button>
+            </div>
+            <div class="modal-body"><p id="confirmMessage">Are you sure you want to continue?</p></div>
+            <div class="modal-footer">
+                <button class="secondary-button" data-close-modal="confirmModal" type="button">Cancel</button>
+                <button id="confirmActionBtn" class="danger-button" type="button">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <input id="fileUploadInput" type="file" hidden multiple accept=".html,.htm,.css,.js,.json,.txt,.md,.png,.jpg,.jpeg,.svg">
+
+    <script src="main.js"></script>
+</body>
+</html>
